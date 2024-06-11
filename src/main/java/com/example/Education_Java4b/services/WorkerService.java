@@ -26,18 +26,18 @@ public class WorkerService {
         return workerRepository.findById(id);
     }
 
-    public Worker createWorker(Long supplierId, Worker worker) {
+    public void createWorker(Long supplierId, Worker worker) {
         Supplier supplier = supplierRepository.findById(supplierId)
                 .orElseThrow(() -> new RuntimeException("Supplier not found"));
 
         worker.setSupplier(supplier);
         supplier.getWorkers().add(worker);
 
-        return workerRepository.save(worker);
+        workerRepository.save(worker);
     }
 
-    public Worker updateWorker(Worker worker) {
-        return workerRepository.save(worker);
+    public void updateWorker(Worker worker) {
+        workerRepository.save(worker);
     }
 
     public void deleteWorker(Long id) {

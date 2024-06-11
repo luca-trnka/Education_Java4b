@@ -23,12 +23,12 @@ public class SupplierService {
         return supplierRepository.findById(id);
     }
 
-    public Supplier createSupplier(Supplier supplier) {
-        return supplierRepository.save(supplier);
+    public void createSupplier(Supplier supplier) {
+        supplierRepository.save(supplier);
     }
 
-    public Supplier updateSupplier(Supplier supplier) {
-        return supplierRepository.save(supplier);
+    public void updateSupplier(Supplier supplier) {
+        supplierRepository.save(supplier);
     }
 
     public void deleteSupplier(Long id) {

@@ -32,12 +32,12 @@ public class CustomerService {
         return customerRepository.findByEmail(email);
     }
 
-    public Customer createCustomer(Customer customer) {
-        return customerRepository.save(customer);
+    public void createCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 
-    public Customer updateCustomer(Customer customer) {
-        return customerRepository.save(customer);
+    public void updateCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 
     public void deleteCustomer(Long id) {
