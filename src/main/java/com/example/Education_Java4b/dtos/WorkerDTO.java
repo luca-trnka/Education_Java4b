@@ -2,6 +2,7 @@ package com.example.Education_Java4b.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.models.Supplier;
@@ -14,30 +15,41 @@ import java.util.stream.Collectors;
 public class WorkerDTO {
     private Long id;
     @NotBlank
-    @Size(min = 5,max = 25, message = "Name size should be between 5 and 25 characters")
-    private String name;
-    @NotBlank
     @Email(regexp=".+@.+\\..+", message = "Email formal is not valid")
     private String email;
+
+    @NotBlank
+    @Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must have at least 8 characters, one uppercase letter, one number and one special character")
+    private String password;
+
+    @NotBlank
+    @Size(min = 5, max = 25, message = "Name size should be between 5 and 25 characters")
+    private String name;
+
     private List<Long> offerIds;
     private Long supplierId;
 
     public WorkerDTO() {}
 
-    public WorkerDTO(Long id, String name, String email, List<Long> offerIds, Long supplierId) {
+    public WorkerDTO(Long id, String email, String password, String name, List<Long> offerIds, Long supplierId) {
         this.id = id;
-        this.name = name;
         this.email = email;
+        this.password = password;
+        this.name = name;
         this.offerIds = (offerIds != null) ? offerIds : new ArrayList<>();
         this.supplierId = supplierId;
     }
 
-    public WorkerDTO(Long id, String name, String email, Long supplierId) {
+    public WorkerDTO(Long id, String email, String password, String name) {
         this.id = id;
-        this.name = name;
         this.email = email;
-        this.offerIds = new ArrayList<>();
-        this.supplierId = supplierId;
+        this.password = password;
+        this.name = name;
+    }
+
+    public WorkerDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public Long getId() {
@@ -84,8 +96,9 @@ public class WorkerDTO {
         List<Long> offerIds = worker.getOffers().stream().map(Offer::getId).collect(Collectors.toList());
         return new WorkerDTO(
                 worker.getId(),
-                worker.getName(),
                 worker.getEmail(),
+                worker.getPassword(),
+                worker.getName(),
                 offerIds,
                 worker.getSupplier() != null ? worker.getSupplier().getId() : null
         );
@@ -94,8 +107,9 @@ public class WorkerDTO {
     public Worker toEntity() {
         Worker worker = new Worker();
         worker.setId(this.id);
-        worker.setName(this.name);
         worker.setEmail(this.email);
+        worker.setPassword(this.password);
+        worker.setName(this.name);
 
         if (this.supplierId != null) {
             Supplier supplier = new Supplier();

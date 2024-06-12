@@ -6,14 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Worker {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-
-    private String email;
+public class Worker extends User {
 
     @ManyToMany(mappedBy = "workers")
     private List<Offer> offers;
@@ -22,47 +15,27 @@ public class Worker {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
+    public Worker(Long id, String email, String password, String name, Role role, Supplier supplier) {
+        super(id, email, password, name, role);
+        this.supplier = supplier;
+        this.offers = new ArrayList<>();
+    }
+
+    public Worker(Long id, String email, String password, String name, Role role, Supplier supplier, List<Offer> offers) {
+        super(id, email, password, name, role);
+        this.supplier = supplier;
+        this.offers = offers;
+    }
+
+    public Worker(String email, String password, String name, Role role) {
+        super(email, password, name, role);
+    }
+
+    public Worker(String email, String password) {
+        super(email, password);
+    }
+
     public Worker() {
-        offers = new ArrayList<>();
-    }
-
-    public Worker(String name, String email, List<Offer> offers, Supplier supplier) {
-        this.name = name;
-        this.email = email;
-        this.offers = offers;
-        this.supplier = supplier;
-    }
-
-    public Worker(Long id, String name, String email, List<Offer> offers, Supplier supplier) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.offers = offers;
-        this.supplier = supplier;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public List<Offer> getOffers() {
