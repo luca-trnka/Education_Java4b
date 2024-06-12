@@ -2,6 +2,7 @@ package com.example.Education_Java4b.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.models.Supplier;
@@ -14,40 +15,44 @@ import java.util.stream.Collectors;
 public class SupplierDTO {
     private Long id;
     @NotBlank
-    @Size(min = 5,max = 25, message = "Name size should be between 5 and 25 characters")
-    private String name;
-    @NotBlank
     @Email(regexp=".+@.+\\..+", message = "Email formal is not valid")
     private String email;
+
+    @NotBlank
+    @Pattern(regexp="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must have at least 8 characters, one uppercase letter, one number and one special character")
+    private String password;
+
+    @NotBlank
+    @Size(min = 5, max = 25, message = "Name size should be between 5 and 25 characters")
+    private String name;
+
     private List<Long> offerIds;
     private List<Long> workerIds;
 
-    public SupplierDTO() {
-    }
-
-
-    public SupplierDTO(Long id, String name, String email, List<Long> offerIds, List<Long> workerIds) {
+    public SupplierDTO(Long id, String email, String password, String name, List<Long> offerIds, List<Long> workerIds) {
         this.id = id;
-        this.name = name;
         this.email = email;
+        this.password = password;
+        this.name = name;
         this.offerIds = (offerIds != null) ? offerIds : new ArrayList<>();
         this.workerIds = (workerIds!= null) ? workerIds : new ArrayList<>();
     }
 
-    public SupplierDTO(Long id, String name, String email, List<Long> workerIds) {
+    public SupplierDTO(Long id, String email, String password, String name) {
         this.id = id;
-        this.name = name;
         this.email = email;
-        this.workerIds = workerIds = (workerIds!= null) ? workerIds : new ArrayList<>();
-        this.offerIds = new ArrayList<>();
-    }
-
-    public SupplierDTO(Long id, String name, String email) {
-        this.id = id;
+        this.password = password;
         this.name = name;
-        this.email = email;
         this.offerIds = new ArrayList<>();
         this.workerIds = new ArrayList<>();
+    }
+
+    public SupplierDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public SupplierDTO() {
     }
 
     public Long getId() {
@@ -58,20 +63,28 @@ public class SupplierDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
+    public @NotBlank @Email String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NotBlank @Email String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public @NotBlank @Size(min = 5, max = 25, message = "Name size should be between 5 and 25 characters") String getName() {
+        return name;
+    }
+
+    public void setName(@NotBlank @Size(min = 5, max = 25, message = "Name size should be between 5 and 25 characters") String name) {
+        this.name = name;
     }
 
     public List<Long> getOfferIds() {
@@ -93,8 +106,9 @@ public class SupplierDTO {
     public Supplier toEntity() {
         Supplier supplier = new Supplier();
         supplier.setId(this.id);
-        supplier.setName(this.name);
         supplier.setEmail(this.email);
+        supplier.setPassword(this.password);
+        supplier.setName(this.name);
         List<Offer> offers = new ArrayList<>();
         if (this.offerIds == null) {
             this.offerIds = new ArrayList<>();
@@ -136,8 +150,9 @@ public class SupplierDTO {
 
         return new SupplierDTO(
                 supplier.getId(),
-                supplier.getName(),
                 supplier.getEmail(),
+                supplier.getPassword(),
+                supplier.getName(),
                 offerIds,
                 workerIds
         );

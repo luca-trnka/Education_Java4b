@@ -14,6 +14,10 @@ public class Customer extends User {
         offers = new ArrayList<>();
     }
 
+    public Customer(Long id, String email, String password, String name) {
+        super(id, email, password, name, Role.CUSTOMER);
+        offers = new ArrayList<>();
+    }
     public Customer(String email, String password, String name) {
         super(email, password, name, Role.CUSTOMER);
         offers = new ArrayList<>();
