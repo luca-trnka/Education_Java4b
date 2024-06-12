@@ -6,14 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-    private String email;
-
+public class Customer extends User {
     @OneToMany(mappedBy = "customer")
     private List<Offer> offers;
 
@@ -21,41 +14,14 @@ public class Customer {
         offers = new ArrayList<>();
     }
 
-    public Customer(String name, String email, List<Offer> offers) {
-        this.name = name;
-        this.email = email;
-        this.offers = offers;
+    public Customer(String email, String password, String name) {
+        super(email, password, name, Role.CUSTOMER);
+        offers = new ArrayList<>();
     }
 
-    public Customer(Long id, String name, String email, List<Offer> offers) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.offers = offers;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public Customer(String email, String password) {
+        super(email, password);
+        offers = new ArrayList<>();
     }
 
     public List<Offer> getOffers() {
