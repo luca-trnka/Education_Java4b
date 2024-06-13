@@ -3,8 +3,8 @@ package com.example.Education_Java4b.dtos;
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.models.OfferStatus;
 import com.example.Education_Java4b.models.User;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import java.util.List;
 import java.util.stream.Collectors;

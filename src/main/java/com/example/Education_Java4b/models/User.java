@@ -1,11 +1,9 @@
 package com.example.Education_Java4b.models;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,6 +41,7 @@ public class User {
     public User() {
     }
 
+
     public Long getId() {
         return id;
     }
@@ -57,6 +56,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -74,13 +81,4 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 }

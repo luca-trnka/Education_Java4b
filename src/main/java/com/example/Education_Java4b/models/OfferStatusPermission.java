@@ -1,9 +1,9 @@
 package com.example.Education_Java4b.models;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 
 @Entity
+@Table(name = "offer_status_permissions")
 public class OfferStatusPermission {
 
     @Id
