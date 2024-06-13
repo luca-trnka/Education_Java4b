@@ -1,9 +1,7 @@
 package com.example.Education_Java4b.dtos;
 
-import com.example.Education_Java4b.models.Customer;
-import com.example.Education_Java4b.models.Supplier;
+import com.example.Education_Java4b.models.Role;
 import com.example.Education_Java4b.models.User;
-import com.example.Education_Java4b.models.Worker;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -52,24 +50,12 @@ public class UserDTO {
     }
 
     public User toEntity() {
-        User user;
-        switch (this.role) {
-            case "CUSTOMER":
-                user = new Customer();
-                break;
-            case "SUPPLIER":
-                user = new Supplier();
-                break;
-            case "WORKER":
-                user = new Worker();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid role: " + this.role);
-        }
+        User user = new User();
         user.setId(this.id);
         user.setEmail(this.email);
         user.setPassword(this.password);
         user.setName(this.name);
+        user.setRole(Role.valueOf(this.role));
         return user;
     }
 
@@ -81,19 +67,19 @@ public class UserDTO {
         this.id = id;
     }
 
-    public @NotBlank @Email String getEmail() {
+    public @NotBlank @Email(regexp = ".+@.+\\..+", message = "Email formal is not valid") String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotBlank @Email String email) {
+    public void setEmail(@NotBlank @Email(regexp = ".+@.+\\..+", message = "Email formal is not valid") String email) {
         this.email = email;
     }
 
-    public String getPassword() {
+    public @NotBlank @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must have at least 8 characters, one uppercase letter, one number and one special character") String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(@NotBlank @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password must have at least 8 characters, one uppercase letter, one number and one special character") String password) {
         this.password = password;
     }
 
@@ -113,5 +99,5 @@ public class UserDTO {
         this.role = role;
     }
 
-
+    // getters and setters
 }

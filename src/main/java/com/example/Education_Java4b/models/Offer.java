@@ -1,8 +1,9 @@
 package com.example.Education_Java4b.models;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.util.ArrayList;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,52 +12,47 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 5, max = 25, message = "Title size should be between 5 and 25 characters")
+    private String title;
+
+    @NotBlank
+    @Size(min = 5, max = 300, message = "Description size should be between 5 and 300 characters")
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private OfferStatus status = OfferStatus.NEW; //default status is new
-
-    @ManyToOne
-    private Customer customer;
+    private OfferStatus status;
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
+    private User supplier;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private User customer;
 
     @ManyToMany
-    private List<Worker> workers;
+    @JoinTable(
+            name = "offer_worker",
+            joinColumns = @JoinColumn(name = "offer_id"),
+            inverseJoinColumns = @JoinColumn(name = "worker_id"))
+    private List<User> workers;
 
-    public Offer() {
-        workers = new ArrayList<>();
-    }
-
-    public Offer(String description, OfferStatus status, Customer customer, Supplier supplier, List<Worker> workers) {
-        this.description = description;
-        this.status = status;
-        this.customer = customer;
-        this.supplier = supplier;
-        this.workers = workers;
-    }
-
-    public Offer(Long id, String description, OfferStatus status, Customer customer, Supplier supplier, List<Worker> workers) {
-        this.id = id;
-        this.description = description;
-        this.status = status;
-        this.customer = customer;
-        this.supplier = supplier;
-        this.workers = workers;
-    }
-
-    public Offer(Long id, String description, Customer customer, Supplier supplier) {
-        this(id, description, OfferStatus.NEW, customer, supplier, new ArrayList<>());
-    }
-
+    // getters and setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -75,27 +71,27 @@ public class Offer {
         this.status = status;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Supplier getSupplier() {
+    public User getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(Supplier supplier) {
+    public void setSupplier(User supplier) {
         this.supplier = supplier;
     }
 
-    public List<Worker> getWorkers() {
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public List<User> getWorkers() {
         return workers;
     }
 
-    public void setWorkers(List<Worker> workers) {
+    public void setWorkers(List<User> workers) {
         this.workers = workers;
     }
 }

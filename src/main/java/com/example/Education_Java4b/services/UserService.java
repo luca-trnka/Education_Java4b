@@ -24,35 +24,15 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public Optional<User> getUserByName(String name) {
-        return userRepository.findByName(name);
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    public void createUser(User user) {
-        userRepository.save(user);
-    }
-
-    public void updateUser(User user) {
-        userRepository.save(user);
+    public User updateUser(User user) {
+        return userRepository.save(user);
     }
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
-    }
-
-    public boolean userExists(Long id) {
-        return userRepository.existsById(id);
-    }
-
-    public boolean userExistsByName(String name) {
-        return getUserByName(name).isPresent();
-    }
-
-    public boolean userExistsByEmail(String email) {
-        return getUserByEmail(email).isPresent();
     }
 }
