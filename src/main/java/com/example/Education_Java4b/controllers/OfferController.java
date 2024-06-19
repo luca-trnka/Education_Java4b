@@ -4,11 +4,12 @@ import com.example.Education_Java4b.exceptions.ResourceNotFoundException;
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.models.OfferStatus;
 import com.example.Education_Java4b.services.OfferService;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController

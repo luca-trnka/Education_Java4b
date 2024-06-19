@@ -1,13 +1,17 @@
 package com.example.Education_Java4b.services;
 
-import com.example.Education_Java4b.models.User;
 import com.example.Education_Java4b.models.Role;
+import com.example.Education_Java4b.models.User;
 import com.example.Education_Java4b.repos.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -19,6 +23,9 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -45,15 +52,21 @@ public class UserService {
     }
 
     public User registerUser(User user) {
+        logger.info("Registering user: {}", user);
         Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser.isPresent()) {
+            logger.warn("User with this email already exists: {}", user.getEmail());
             throw new IllegalArgumentException("User with this email already exists.");
         }
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
-        user.setRole(Role.NEW_USER);
-        return userRepository.save(user);
+        Set<Role> roles = new HashSet<>();
+        roles.add(Role.NEW_USER);
+        user.setRoles(roles);
+        User savedUser = userRepository.save(user);
+        logger.info("Registered user: {}", savedUser);
+        return savedUser;
     }
 
     public Optional<User> authenticateUser(String email, String password) {
