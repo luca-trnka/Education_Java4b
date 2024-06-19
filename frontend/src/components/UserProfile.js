@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const UserProfile = ({ userId }) => {
+const UserProfile = () => {
     const [user, setUser] = useState({});
     const [roles, setRoles] = useState([]);
     const [selectedRole, setSelectedRole] = useState('');
+    const { userId } = useParams();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,7 +26,7 @@ const UserProfile = ({ userId }) => {
 
     const handleRoleChange = async () => {
         try {
-            await axios.put(`http://localhost:8080/api/users/${userId}`, { ...user, role: selectedRole });
+            await axios.put(`http://localhost:8080/api/users/${userId}`, { role: selectedRole });
             // Handle successful role update
         } catch (error) {
             console.error('Update role error:', error);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const AdminDashboard = () => {
@@ -7,7 +8,17 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/api/users/all');
+                const token = localStorage.getItem('token');
+                console.log('Token:', token); // Vypíše hodnotu tokenu do konzole
+                if (!token) {
+                    console.error('Token is not available');
+                    return;
+                }
+                const response = await axios.get('http://localhost:8080/api/users/all', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
                 setUsers(response.data);
             } catch (error) {
                 console.error('Fetch users error:', error);
@@ -40,8 +51,8 @@ const AdminDashboard = () => {
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Email</th>
                     <th>Name</th>
+                    <th>Email</th>
                     <th>Role</th>
                     <th>Actions</th>
                 </tr>
@@ -50,8 +61,8 @@ const AdminDashboard = () => {
                 {users.map(user => (
                     <tr key={user.id}>
                         <td>{user.id}</td>
+                        <td><Link to={`/profile/${user.id}`}>{user.name}</Link></td>
                         <td>{user.email}</td>
-                        <td>{user.name}</td>
                         <td>{user.role}</td>
                         <td>
                             <button onClick={() => handleEditUser(user.id)}>Edit</button>

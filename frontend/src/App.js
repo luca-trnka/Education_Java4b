@@ -10,7 +10,6 @@ import WorkerDashboard from './components/WorkerDashboard';
 import NewUserDashboard from './components/NewUserDashboard';
 import UserProfile from './components/UserProfile';
 import { jwtDecode } from 'jwt-decode';
-import { useHistory } from 'react-router-dom';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,6 +20,7 @@ function App() {
         setIsLoggedIn(true);
 
         const decodedToken = jwtDecode(token);
+        console.log('Decoded token:', decodedToken);
         setRole(decodedToken.role);
     };
 
@@ -46,13 +46,16 @@ function App() {
                     <Route path="/" element={<Homepage />} />
                     <Route path="/login" element={<Login onLogin={handleSuccessfulLogin} />} />
                     <Route path="/register" element={<Register />} />
-                    {isLoggedIn && role === 'ADMIN' && <Route path="/dashboard" element={<AdminDashboard />} />}
-                    {isLoggedIn && role === 'CUSTOMER' && <Route path="/dashboard" element={<CustomerDashboard />} />}
-                    {isLoggedIn && role === 'SUPPLIER' && <Route path="/dashboard" element={<SupplierDashboard />} />}
-                    {isLoggedIn && role === 'WORKER' && <Route path="/dashboard" element={<WorkerDashboard />} />}
-                    {isLoggedIn && role === 'NEW_USER' && <Route path="/dashboard" element={<NewUserDashboard />} />}
+                    {isLoggedIn && (
+                        <Route path="/dashboard" element={
+                            role === 'ADMIN' ? <AdminDashboard onLogout={handleLogout} /> :
+                                role === 'CUSTOMER' ? <CustomerDashboard onLogout={handleLogout} /> :
+                                    role === 'WORKER' ? <WorkerDashboard onLogout={handleLogout} /> :
+                                        role === 'SUPPLIER' ? <SupplierDashboard onLogout={handleLogout} /> :
+                                            <NewUserDashboard onLogout={handleLogout} />
+                        } />
+                    )}
                     <Route path="/profile/:userId" element={<UserProfile />} />
-                    {/* Add routes for Customer, Supplier, Worker dashboards */}
                 </Routes>
             </div>
         </Router>
