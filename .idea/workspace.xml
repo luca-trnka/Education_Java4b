@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a58cacb7-99e1-4a34-a73f-6f0ad5decf16" name="Changes" comment="&quot;another changes&quot;" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2hj1av1GLzAfdHTOuiUavqzPitT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CustomerControllerTest.createCustomerTest.executor": "Run",
+    "JUnit.CustomerControllerTest.executor": "Run",
+    "JUnit.OfferControllerTest.executor": "Run",
+    "JUnit.OfferControllerTest.testCreateOffer.executor": "Run",
+    "JUnit.SupplierControllerTest.executor": "Run",
+    "JUnit.WorkerControllerTest.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.EducationJava4bApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "22",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lucie/PF/Education_Java4b/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.25977013",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.customizations",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lucie\PF\Education_Java4b\backend" />
+      <recent name="C:\Users\lucie\PF\Education_Java4b\src\main\java\com\example\Education_Java4b\services" />
+      <recent name="C:\Users\lucie\PF\Education_Java4b\src\main\java\com\example\Education_Java4b\controllers" />
+      <recent name="C:\Users\lucie\PF\Education_Java4b\src\main\java\com\example\Education_Java4b\dtos" />
+      <recent name="C:\Users\lucie\PF\Education_Java4b\src\main\java\com\example\Education_Java4b\exceptions" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lucie\PF\Education_Java4b\backend" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.Education_Java4b.controllers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EducationJava4bApplication">
+    <configuration name="CustomerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.CustomerControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerControllerTest.createCustomerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.CustomerControllerTest" />
+      <option name="METHOD_NAME" value="createCustomerTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OfferControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.OfferControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SupplierControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.SupplierControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorkerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.WorkerControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EducationJava4bApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="22" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Education_Java4b" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Education_Java4b.EducationJava4bApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.WorkerControllerTest" />
+        <item itemvalue="JUnit.SupplierControllerTest" />
+        <item itemvalue="JUnit.CustomerControllerTest" />
+        <item itemvalue="JUnit.CustomerControllerTest.createCustomerTest" />
+        <item itemvalue="JUnit.OfferControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a58cacb7-99e1-4a34-a73f-6f0ad5decf16" name="Changes" comment="" />
+      <created>1718092740889</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718092740889</updated>
+      <workItem from="1718092741935" duration="8513000" />
+      <workItem from="1718106411715" duration="21785000" />
+      <workItem from="1718264820080" duration="365000" />
+      <workItem from="1718265310534" duration="28602000" />
+      <workItem from="1718356006326" duration="161000" />
+      <workItem from="1718356191187" duration="113000" />
+      <workItem from="1718356317157" duration="67000" />
+      <workItem from="1718356651407" duration="91000" />
+      <workItem from="1718356770028" duration="33000" />
+      <workItem from="1718356813758" duration="7266000" />
+      <workItem from="1718368205865" duration="32715000" />
+    </task>
+    <task id="LOCAL-00001" summary="&quot;project set up&quot;">
+      <option name="closed" value="true" />
+      <created>1718109086938</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718109086938</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&quot;import of entities, dtos + repos created&quot;">
+      <option name="closed" value="true" />
+      <created>1718112957774</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718112957774</updated>
+    </task>
+    <task id="LOCAL-00003" summary="&quot;import of ExceptionsHandler + Services created&quot;">
+      <option name="closed" value="true" />
+      <created>1718113051707</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718113051707</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&quot;Controllers created&quot;">
+      <option name="closed" value="true" />
+      <created>1718113160371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718113160371</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&quot;ControllerTest created + Flyway Migration Scripts: Initial setup + demo data created&quot;">
+      <option name="closed" value="true" />
+      <created>1718116145933</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718116145933</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&quot;create method changed to void&quot;">
+      <option name="closed" value="true" />
+      <created>1718116179793</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718116179793</updated>
+    </task>
+    <task id="LOCAL-00007" summary="&quot;user, userDTO, role created + customer changed accordingly&quot;">
+      <option name="closed" value="true" />
+      <created>1718226155659</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718226155659</updated>
+    </task>
+    <task id="LOCAL-00008" summary="&quot;supplier changed accordingly cause the user&quot;">
+      <option name="closed" value="true" />
+      <created>1718226982626</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718226982626</updated>
+    </task>
+    <task id="LOCAL-00009" summary="&quot;worker changed accordingly cause the user&quot;">
+      <option name="closed" value="true" />
+      <created>1718227756962</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718227756962</updated>
+    </task>
+    <task id="LOCAL-00010" summary="&quot;user repo and service done&quot;">
+      <option name="closed" value="true" />
+      <created>1718228514440</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718228514440</updated>
+    </task>
+    <task id="LOCAL-00011" summary="&quot;another changes&quot;">
+      <option name="closed" value="true" />
+      <created>1718281453121</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718281453121</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;project set up&quot;" />
+    <MESSAGE value="&quot;import of entities, dtos + repos created&quot;" />
+    <MESSAGE value="&quot;import of ExceptionsHandler + Services created&quot;" />
+    <MESSAGE value="&quot;Controllers created&quot;" />
+    <MESSAGE value="&quot;ControllerTest created + Flyway Migration Scripts: Initial setup + demo data created&quot;" />
+    <MESSAGE value="&quot;create method changed to void&quot;" />
+    <MESSAGE value="&quot;user, userDTO, role created + customer changed accordingly&quot;" />
+    <MESSAGE value="&quot;supplier changed accordingly cause the user&quot;" />
+    <MESSAGE value="&quot;worker changed accordingly cause the user&quot;" />
+    <MESSAGE value="&quot;user repo and service done&quot;" />
+    <MESSAGE value="&quot;another changes&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;another changes&quot;" />
+  </component>
+</project>
