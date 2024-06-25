@@ -6,19 +6,4 @@ public enum Role {
     SUPPLIER,
     WORKER,
     ADMIN
-//    NEW_USER("New User"),
-//    CUSTOMER("Customer"),
-//    SUPPLIER("Supplier"),
-//    WORKER("Worker"),
-//    ADMIN("Admin");
-
-//    private final String displayName;
-//
-//    Role(String displayName) {
-//        this.displayName = displayName;
-//    }
-//
-//    public String getDisplayName() {
-//        return displayName;
-//    }
 }

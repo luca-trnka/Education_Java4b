@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,7 +46,7 @@ public class AuthController {
                 logger.info("Attempting to authenticate user {}", loginUser.getEmail());
                 userService.authenticateUser(loginUser.getEmail(), loginUser.getPassword());
                 logger.info("User {} authenticated successfully", loginUser.getEmail());
-                String token = jwtTokenProvider.generateToken(loginUser.getEmail(), optionalUser.get().getRoles());
+                String token = jwtTokenProvider.generateToken(loginUser.getEmail(), optionalUser.get().getRole());
                 Map<String, Object> response = new HashMap<>();
                 response.put("email", loginUser.getEmail());
                 response.put("token", token);

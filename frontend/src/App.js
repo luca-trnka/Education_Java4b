@@ -10,6 +10,7 @@ import WorkerDashboard from './components/WorkerDashboard';
 import NewUserDashboard from './components/NewUserDashboard';
 import UserProfile from './components/UserProfile';
 import { jwtDecode } from 'jwt-decode';
+import OfferProfile from "./components/OfferProfile";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,7 +56,8 @@ function App() {
                                             <NewUserDashboard onLogout={handleLogout} />
                         } />
                     )}
-                    <Route path="/profile/:userId" element={<UserProfile />} />
+                    <Route path="/user-profile/:userId" element={<UserProfile />} />
+                    <Route path="/offer-profile/:offerId" element={<OfferProfile />} />
                 </Routes>
             </div>
         </Router>

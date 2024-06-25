@@ -2,7 +2,9 @@ package com.example.Education_Java4b.dtos;
 
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.models.OfferStatus;
+import com.example.Education_Java4b.models.Role;
 import com.example.Education_Java4b.models.User;
+import com.example.Education_Java4b.services.UserService;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -49,13 +51,27 @@ public class OfferDTO {
         );
     }
 
-    public Offer toEntity() {
+    public Offer toEntity(UserService userService) {
         Offer offer = new Offer();
         offer.setId(this.id);
         offer.setTitle(this.title);
         offer.setDescription(this.description);
-        offer.setStatus(OfferStatus.valueOf(this.status));
-        // Note: You need to fetch the User entities for supplier, customer and workers from the database
+        OfferStatus offerStatus;
+        try {
+            offerStatus = OfferStatus.valueOf(this.status);
+        } catch (IllegalArgumentException | NullPointerException e) {
+            offerStatus = OfferStatus.NEW; // Set a default status
+        }
+        offer.setStatus(offerStatus);
+
+//        User supplier = userService.getUserByIdAndRole(this.supplierId, Role.SUPPLIER);
+//        User customer = userService.getUserByIdAndRole(this.customerId, Role.CUSTOMER);
+//        List<User> workers = this.workerIds.stream().map(id -> userService.getUserByIdAndRole(id, Role.WORKER)).collect(Collectors.toList());
+//
+//        offer.setSupplier(supplier);
+//        offer.setCustomer(customer);
+//        offer.setWorkers(workers);
+
         return offer;
     }
 

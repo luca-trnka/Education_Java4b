@@ -13,11 +13,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -29,6 +29,12 @@
       <MavenGeneralSettings>
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="17" />
+        <option name="workspaceImportForciblyTurnedOn" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectColorInfo">{
@@ -46,8 +52,14 @@
   "keyToString": {
     "JUnit.CustomerControllerTest.createCustomerTest.executor": "Run",
     "JUnit.CustomerControllerTest.executor": "Run",
+    "JUnit.EducationJava4bApplicationTests (1).executor": "Run",
+    "JUnit.EducationJava4bApplicationTests.executor": "Run",
     "JUnit.OfferControllerTest.executor": "Run",
     "JUnit.OfferControllerTest.testCreateOffer.executor": "Run",
+    "JUnit.SecurityConfigIntegrationTest.executor": "Run",
+    "JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithAdminTokenShouldReturnOk.executor": "Run",
+    "JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized.executor": "Run",
+    "JUnit.SecurityConfigTest.jwtAuthenticationFilter.executor": "Run",
     "JUnit.SupplierControllerTest.executor": "Run",
     "JUnit.WorkerControllerTest.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
@@ -58,10 +70,11 @@
     "Spring Boot.EducationJava4bApplication.executor": "Run",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "<unknown>",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "22",
     "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/lucie/PF/Education_Java4b/backend/target/generated-test-sources/test-annotations",
     "last_opened_file_path": "C:/Users/lucie/PF/Education_Java4b/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -72,7 +85,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.25977013",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.customizations",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -96,82 +109,84 @@
       <recent name="C:\Users\lucie\PF\Education_Java4b\backend" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.Education_Java4b.config" />
       <recent name="com.example.Education_Java4b.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.EducationJava4bApplication">
-    <configuration name="CustomerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EducationJava4bApplicationTests (1)">
+    <configuration name="EducationJava4bApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Education_Java4b" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="PATTERN" value="com.example.Education_Java4b.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.CustomerControllerTest" />
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.EducationJava4bApplicationTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerControllerTest.createCustomerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EducationJava4bApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Education_Java4b" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="PATTERN" value="test.java.com.example.Education_Java4b.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.CustomerControllerTest" />
-      <option name="METHOD_NAME" value="createCustomerTest" />
+      <option name="PACKAGE_NAME" value="test.java.com.example.Education_Java4b" />
+      <option name="MAIN_CLASS_NAME" value="test.java.com.example.Education_Java4b.EducationJava4bApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityConfigIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.config" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.config.SecurityConfigIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecurityConfigIntegrationTest.testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Education_Java4b" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Education_Java4b.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.config" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.config.SecurityConfigIntegrationTest" />
+      <option name="METHOD_NAME" value="testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OfferControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SecurityConfigTest.jwtAuthenticationFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Education_Java4b" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
+          <option name="PATTERN" value="com.example.Education_Java4b.config.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.OfferControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SupplierControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Education_Java4b" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.SupplierControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WorkerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Education_Java4b" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.Education_Java4b.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.controllers.WorkerControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.example.Education_Java4b.config" />
+      <option name="MAIN_CLASS_NAME" value="com.example.Education_Java4b.config.SecurityConfigTest" />
+      <option name="METHOD_NAME" value="jwtAuthenticationFilter" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WorkerControllerTest" />
-        <item itemvalue="JUnit.SupplierControllerTest" />
-        <item itemvalue="JUnit.CustomerControllerTest" />
-        <item itemvalue="JUnit.CustomerControllerTest.createCustomerTest" />
-        <item itemvalue="JUnit.OfferControllerTest" />
+        <item itemvalue="JUnit.EducationJava4bApplicationTests (1)" />
+        <item itemvalue="JUnit.EducationJava4bApplicationTests" />
+        <item itemvalue="JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized" />
+        <item itemvalue="JUnit.SecurityConfigIntegrationTest" />
+        <item itemvalue="JUnit.SecurityConfigTest.jwtAuthenticationFilter" />
       </list>
     </recent_temporary>
   </component>
@@ -222,7 +237,7 @@
       <workItem from="1718356651407" duration="91000" />
       <workItem from="1718356770028" duration="33000" />
       <workItem from="1718356813758" duration="7266000" />
-      <workItem from="1718368205865" duration="32715000" />
+      <workItem from="1718368205865" duration="59125000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;project set up&quot;">
       <option name="closed" value="true" />

@@ -1,7 +1,5 @@
 package com.example.Education_Java4b.models;
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "app_user")
@@ -18,31 +16,29 @@ public class User{
 
     private String name;
 
-    @ElementCollection(targetClass = Role.class)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
+    private Role role;
 
-    public User(Long id, String email, String password, String name, Set<Role> roles) {
+    public User(Long id, String email, String password, String name, Role role) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles = roles;
+        this.role = role;
     }
 
-    public User(String email, String password, String name, Set<Role> roles) {
+    public User(String email, String password, String name, Role role) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles = roles;
+        this.role = role;
     }
 
     public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles.add(Role.NEW_USER);
+        this.role = Role.NEW_USER;
     }
 
     public User(String email, String password) {
@@ -52,7 +48,6 @@ public class User{
 
     public User() {
     }
-
 
     public Long getId() {
         return id;
@@ -86,11 +81,11 @@ public class User{
         this.name = name;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

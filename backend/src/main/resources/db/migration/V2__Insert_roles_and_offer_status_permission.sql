@@ -2,8 +2,8 @@
 
 INSERT INTO roles (name) VALUES  ('NEW_USER'), ('ADMIN'), ('CUSTOMER'), ('SUPPLIER'), ('WORKER');
 
-INSERT INTO offer_status_permissions (offer_status, role_id)
-SELECT offer_status, roles.id
+INSERT INTO offer_status_permissions (status, role_id)
+SELECT status, roles.id
 FROM (VALUES
           ('NEW', 'SUPPLIER'),
           ('NEW', 'ADMIN'),
@@ -32,6 +32,6 @@ FROM (VALUES
           ('COMPLETED', 'SUPPLIER'),
           ('COMPLETED', 'WORKER'),
           ('COMPLETED', 'ADMIN')
-     ) AS tmp (offer_status, role_name)
+     ) AS tmp (status, role_name)
          JOIN roles ON roles.name = tmp.role_name;
 

@@ -11,28 +11,28 @@ public class UserDTO {
     private String email;
     private String password;
     private String name;
-    private Set<String> roles;
+    private String role;
 
-    public UserDTO(Long id, String email, String password, String name, Set<String> roles) {
+    public UserDTO(Long id, String email, String password, String name, String role) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles = roles;
+        this.role = role;
     }
 
-    public UserDTO(String email, String password, String name, Set<String> roles) {
+    public UserDTO(String email, String password, String name, String role) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles = roles;
+        this.role = role;
     }
 
     public UserDTO(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.roles = Set.of(Role.NEW_USER.name());
+        this.role = Role.NEW_USER.name();
     }
 
     public UserDTO() {
@@ -42,18 +42,15 @@ public class UserDTO {
         if (user == null) {
             return null;
         }
-        Set<String> roles = user.getRoles() != null ? user.getRoles().stream()
-                .map(Enum::name)
-                .collect(Collectors.toSet()) : Set.of(Role.NEW_USER.name());
-        return new UserDTO(user.getId(), user.getEmail(), user.getPassword(), user.getName(), roles);
+        String role = user.getRole() != null ? user.getRole().name() : Role.NEW_USER.name();
+        return new UserDTO(user.getId(), user.getEmail(), user.getPassword(), user.getName(), role);
     }
 
     public User toEntity() {
-        Set<Role> roles = this.roles != null ? this.roles.stream()
-                .map(Role::valueOf)
-                .collect(Collectors.toSet()) : Set.of(Role.NEW_USER);
-        return new User(this.id, this.email, this.password, this.name, roles);
+        Role role = this.role != null ? Role.valueOf(this.role) : Role.NEW_USER;
+        return new User(this.id, this.email, this.password, this.name, role);
     }
+
     public Long getId() {
         return id;
     }
@@ -86,11 +83,11 @@ public class UserDTO {
         this.name = name;
     }
 
-    public Set<String> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

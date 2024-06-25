@@ -1,11 +1,15 @@
 package com.example.Education_Java4b.controllers;
 
 import com.example.Education_Java4b.dtos.UserDTO;
+import com.example.Education_Java4b.exceptions.ResourceNotFoundException;
 import com.example.Education_Java4b.models.User;
+import com.example.Education_Java4b.services.AuthenticationService;
 import com.example.Education_Java4b.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,9 +20,11 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final AuthenticationService authenticationService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, AuthenticationService authenticationService) {
         this.userService = userService;
+        this.authenticationService = authenticationService;
     }
 
     @PostMapping("/register")
@@ -55,9 +61,13 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/all")
     public ResponseEntity<?> getAllUsers() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Authenticated user: " + authentication.getName());
+        System.out.println("Authenticated authorities: " + authentication.getAuthorities());
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{userId}")
     public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody UserDTO userDTO) {
         userDTO.setId(userId);
@@ -67,9 +77,12 @@ public class UserController {
             return new ResponseEntity<>(UserDTO.fromEntity(updatedUser), HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         try {
@@ -77,6 +90,16 @@ public class UserController {
             return new ResponseEntity<>("User with id " + userId + " was deleted.", HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/validateToken")
+    public ResponseEntity<?> validateToken(@RequestBody String token) {
+        boolean isValid = authenticationService.authenticate(token);
+        if (isValid) {
+            return new ResponseEntity<>("Token is valid", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Token is invalid", HttpStatus.UNAUTHORIZED);
         }
     }
 }

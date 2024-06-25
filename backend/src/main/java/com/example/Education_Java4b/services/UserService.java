@@ -60,10 +60,7 @@ public class UserService {
         }
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-
-        Set<Role> roles = new HashSet<>();
-        roles.add(Role.NEW_USER);
-        user.setRoles(roles);
+        user.setRole(Role.NEW_USER);
         User savedUser = userRepository.save(user);
         logger.info("Registered user: {}", savedUser);
         return savedUser;
@@ -80,6 +77,18 @@ public class UserService {
         return Optional.empty();
     }
 
+    public User getUserByIdAndRole(Long id, Role expectedRole) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            if (user.get().getRole().equals(expectedRole)) {
+                return user.get();
+            } else {
+                throw new RuntimeException("User with id: " + id + " is not a " + expectedRole);
+            }
+        } else {
+            throw new RuntimeException("User not found for id: " + id);
+        }
+    }
 
 
 }

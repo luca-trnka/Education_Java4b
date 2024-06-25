@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class OfferService {
@@ -54,11 +53,9 @@ public class OfferService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        Set<Role> userRoles = user.getRoles();
+        Role userRole = user.getRole();
 
-        boolean hasPermission = userRoles.stream()
-                .anyMatch(role -> offerStatusPermissionRepository.existsByOfferStatusAndRole(newStatus, role));
-
+        boolean hasPermission = offerStatusPermissionRepository.existsByOfferStatusAndRole(newStatus, userRole);
 
         if (!hasPermission) {
             throw new IllegalArgumentException("User does not have permission to change offer status to " + newStatus);
