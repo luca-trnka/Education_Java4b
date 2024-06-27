@@ -134,9 +134,9 @@ const AdminDashboard = () => {
                         <td>{offer.id}</td>
                         <td>{offer.title}</td>
                         <td>{offer.status}</td>
-                        <td>{offer.customerId}</td>
-                        <td>{offer.supplierId}</td>
-                        <td>{offer.workerId}</td>
+                        <td>{offer.customer ? offer.customer.id : 'N/A'}</td>
+                        <td>{offer.supplier ? offer.supplier.id : 'N/A'}</td>
+                        <td>{offer.workers ? offer.workers.map(worker => worker.id).join(', ') : 'N/A'}</td>
                         <td>
                             <button onClick={() => handleEditOffer(offer.id)}>Edit</button>
                             <button onClick={() => handleDeleteOffer(offer.id)}>Delete</button>

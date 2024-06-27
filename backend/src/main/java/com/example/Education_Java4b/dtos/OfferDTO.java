@@ -64,13 +64,13 @@ public class OfferDTO {
         }
         offer.setStatus(offerStatus);
 
-//        User supplier = userService.getUserByIdAndRole(this.supplierId, Role.SUPPLIER);
-//        User customer = userService.getUserByIdAndRole(this.customerId, Role.CUSTOMER);
-//        List<User> workers = this.workerIds.stream().map(id -> userService.getUserByIdAndRole(id, Role.WORKER)).collect(Collectors.toList());
-//
-//        offer.setSupplier(supplier);
-//        offer.setCustomer(customer);
-//        offer.setWorkers(workers);
+        User supplier = userService.getUserByIdAndRole(this.supplierId, Role.SUPPLIER);
+        User customer = userService.getUserByIdAndRole(this.customerId, Role.CUSTOMER);
+        List<User> workers = this.workerIds.stream().map(id -> userService.getUserByIdAndRole(id, Role.WORKER)).collect(Collectors.toList());
+
+        offer.setSupplier(supplier);
+        offer.setCustomer(customer);
+        offer.setWorkers(workers);
 
         return offer;
     }
