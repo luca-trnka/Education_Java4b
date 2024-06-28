@@ -34,6 +34,7 @@ public class OfferController {
         this.userService = userService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/")
     public ResponseEntity<?> createOffer(@Valid @RequestBody OfferDTO offerDTO) {
         try {
@@ -91,6 +92,7 @@ public class OfferController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{offerId}")
     public ResponseEntity<?> deleteOffer(@PathVariable Long offerId) {
         try {
@@ -98,6 +100,26 @@ public class OfferController {
             return new ResponseEntity<>("Offer with id " + offerId + " was deleted.", HttpStatus.NO_CONTENT);
         } catch (ResourceNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/{offerId}/workers")
+    public ResponseEntity<?> addWorkerToOffer(@PathVariable Long offerId, @RequestBody Long workerId) {
+        try {
+            Offer updatedOffer = offerService.addWorkerToOffer(offerId, workerId);
+            return new ResponseEntity<>(OfferDTO.fromEntity(updatedOffer), HttpStatus.OK);
+        } catch (IllegalArgumentException | ResourceNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/{offerId}/workers")
+    public ResponseEntity<?> removeWorkerFromOffer(@PathVariable Long offerId, @RequestBody Long workerId) {
+        try {
+            Offer updatedOffer = offerService.removeWorkerFromOffer(offerId, workerId);
+            return new ResponseEntity<>(OfferDTO.fromEntity(updatedOffer), HttpStatus.OK);
+        } catch (IllegalArgumentException | ResourceNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import Multiselect from './Multiselect';
 
 const OfferProfile = () => {
     const [offer, setOffer] = useState({});
     const [statuses, setStatuses] = useState([]);
     const [selectedStatus, setSelectedStatus] = useState('');
+    const [selectedSupplierId, setSelectedSupplierId] = useState('');
+    const [selectedCustomerId, setSelectedCustomerId] = useState('');
+    const [workerIds, setWorkerIds] = useState([])
     const [isEditing, setIsEditing] = useState(false);
     const {offerId} = useParams();
     const navigate = useNavigate();
@@ -93,9 +97,24 @@ const OfferProfile = () => {
                     <span>{selectedStatus}</span>
                 )}
             </p>
-            <p>Customer ID: {offer.customerId}</p>
-            <p>Supplier ID: {offer.supplierId}</p>
-            <p>Worker ID: {offer.workerId}</p>
+            <p>Customer ID:
+                {isEditing ?
+                    <input type="text" value={offer.customerId}
+                           onChange={(e) => setOffer({...offer, customerId: e.target.value})}/>
+                    : offer.customerId}
+            </p>
+            <p>Supplier ID:
+                {isEditing ?
+                    <input type="text" value={offer.supplierId}
+                           onChange={(e) => setOffer({...offer, supplierId: e.target.value})}/>
+                    : offer.supplierId}
+            </p>
+            <p>Worker IDs:
+                {isEditing ?
+                    <Multiselect offer={offer} setOffer={setOffer} isEditing={isEditing}/>
+                    : offer.workerIds && offer.workerIds.join(', ')
+                }
+            </p>
             <button onClick={isEditing ? handleSaveChanges : () => setIsEditing(true)}>
                 {isEditing ? 'Save' : 'Edit'}
             </button>

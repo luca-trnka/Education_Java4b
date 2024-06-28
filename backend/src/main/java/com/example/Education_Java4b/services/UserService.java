@@ -90,5 +90,8 @@ public class UserService {
         }
     }
 
+    public List<User> getAllUsersByRole(Role role) {
+        return userRepository.findAllByRole(role);
+    }
 
 }

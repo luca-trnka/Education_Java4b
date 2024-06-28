@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a58cacb7-99e1-4a34-a73f-6f0ad5decf16" name="Changes" comment="&quot;another changes&quot;" />
+    <list default="true" id="a58cacb7-99e1-4a34-a73f-6f0ad5decf16" name="Changes" comment="&quot;another changes&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +25,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -48,52 +51,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.CustomerControllerTest.createCustomerTest.executor": "Run",
-    "JUnit.CustomerControllerTest.executor": "Run",
-    "JUnit.EducationJava4bApplicationTests (1).executor": "Run",
-    "JUnit.EducationJava4bApplicationTests.executor": "Run",
-    "JUnit.OfferControllerTest.executor": "Run",
-    "JUnit.OfferControllerTest.testCreateOffer.executor": "Run",
-    "JUnit.SecurityConfigIntegrationTest.executor": "Run",
-    "JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithAdminTokenShouldReturnOk.executor": "Run",
-    "JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized.executor": "Run",
-    "JUnit.SecurityConfigTest.jwtAuthenticationFilter.executor": "Run",
-    "JUnit.SupplierControllerTest.executor": "Run",
-    "JUnit.WorkerControllerTest.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.EducationJava4bApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "<unknown>",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "22",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/lucie/PF/Education_Java4b/backend/target/generated-test-sources/test-annotations",
-    "last_opened_file_path": "C:/Users/lucie/PF/Education_Java4b/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.25977013",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.CustomerControllerTest.createCustomerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CustomerControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EducationJava4bApplicationTests (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EducationJava4bApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OfferControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OfferControllerTest.testCreateOffer.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithAdminTokenShouldReturnOk.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigIntegrationTest.testAccessToAdminEndpointWithoutTokenShouldReturnUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SecurityConfigTest.jwtAuthenticationFilter.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SupplierControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WorkerControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EducationJava4bApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;22&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/lucie/PF/Education_Java4b/backend/target/generated-test-sources/test-annotations&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lucie/PF/Education_Java4b/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.25977013&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lucie\PF\Education_Java4b\backend" />
@@ -113,7 +116,7 @@
       <recent name="com.example.Education_Java4b.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EducationJava4bApplicationTests (1)">
+  <component name="RunManager" selected="Spring Boot.EducationJava4bApplication">
     <configuration name="EducationJava4bApplicationTests (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Education_Java4b" />
       <extension name="coverage">
@@ -214,8 +217,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -238,6 +241,8 @@
       <workItem from="1718356770028" duration="33000" />
       <workItem from="1718356813758" duration="7266000" />
       <workItem from="1718368205865" duration="59125000" />
+      <workItem from="1719482450688" duration="656000" />
+      <workItem from="1719483146413" duration="238000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;project set up&quot;">
       <option name="closed" value="true" />

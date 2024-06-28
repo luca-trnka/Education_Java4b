@@ -2,6 +2,7 @@ package com.example.Education_Java4b.controllers;
 
 import com.example.Education_Java4b.dtos.UserDTO;
 import com.example.Education_Java4b.exceptions.ResourceNotFoundException;
+import com.example.Education_Java4b.models.Role;
 import com.example.Education_Java4b.models.User;
 import com.example.Education_Java4b.services.AuthenticationService;
 import com.example.Education_Java4b.services.UserService;
@@ -12,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -100,6 +102,39 @@ public class UserController {
             return new ResponseEntity<>("Token is valid", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Token is invalid", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/customers")
+    public ResponseEntity<List<User>> getAllCustomers() {
+        List<User> customers = userService.getAllUsersByRole(Role.CUSTOMER);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/suppliers")
+    public ResponseEntity<List<User>> getAllSuppliers() {
+        List<User> suppliers = userService.getAllUsersByRole(Role.SUPPLIER);
+        return new ResponseEntity<>(suppliers, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/workers")
+    public ResponseEntity<List<User>> getAllWorkers() {
+        List<User> workers = userService.getAllUsersByRole(Role.WORKER);
+        return new ResponseEntity<>(workers, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/newuser")
+    public ResponseEntity<?> createUser(@RequestBody UserDTO userDTO) {
+        try {
+            User user = userDTO.toEntity();
+            User newUser = userService.createUser(user);
+            return new ResponseEntity<>(UserDTO.fromEntity(newUser), HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }

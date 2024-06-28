@@ -64,4 +64,27 @@ public class OfferService {
         offer.setStatus(newStatus);
         return offerRepository.save(offer);
     }
+
+    public Offer addWorkerToOffer(Long offerId, Long workerId) throws ResourceNotFoundException {
+        Offer offer = offerRepository.findById(offerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Offer not found with id " + offerId));
+
+        User worker = userRepository.findById(workerId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + workerId));
+
+        offer.getWorkers().add(worker);
+        return offerRepository.save(offer);
+    }
+
+    public Offer removeWorkerFromOffer(Long offerId, Long workerId) throws ResourceNotFoundException {
+        Offer offer = offerRepository.findById(offerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Offer not found with id " + offerId));
+
+        User worker = userRepository.findById(workerId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + workerId));
+
+        offer.getWorkers().remove(worker);
+        return offerRepository.save(offer);
+    }
+
 }
