@@ -5,13 +5,15 @@ import axios from 'axios';
 const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
     const [offers, setOffers] = useState([]);
+    const [userSort, setUserSort] = useState('id');
+    const [offerSort, setOfferSort] = useState('id');
     const navigate = useNavigate();
+    const [workers, setWorkers] = useState([]);
 
     useEffect(() => {
         const fetchUsersAndOffers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                console.log('Token:', token);
                 if (!token) {
                     console.error('Token is not available');
                     return;
@@ -37,6 +39,44 @@ const AdminDashboard = () => {
         fetchUsersAndOffers();
     }, []);
 
+    const handleUserSortChange = (selectedOption) => {
+        const currentUsers = [...users];
+        const sortedUsers = currentUsers.sort((a, b) => {
+            switch (selectedOption) {
+                case 'id':
+                    return a.id - b.id;
+                case 'name':
+                    return a.name.localeCompare(b.name);
+                case 'role':
+                    return a.role.localeCompare(b.role);
+                default:
+                    return 0;
+            }
+        });
+
+        setUsers(sortedUsers);
+    };
+
+    const handleOfferSortChange = (selectedOption) => {
+        const currentOffers = [...offers];
+        const sortedOffers = currentOffers.sort((a, b) => {
+            switch (selectedOption) {
+                case 'id':
+                    return a.id - b.id;
+                case 'title':
+                    return a.title.localeCompare(b.title);
+                case 'customer':
+                    return a.customer.id - b.customer.id;
+                default:
+                    return 0;
+            }
+        });
+
+        setOffers(sortedOffers);
+    };
+
+
+
     const handleEditUser = (userId) => {
         navigate(`/user-profile/${userId}`);
     };
@@ -54,9 +94,12 @@ const AdminDashboard = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setUsers(users.filter(user => user.id !== userId));
+                const updatedUsers = users.filter(user => user.id !== userId);
+                setUsers(updatedUsers);
+                alert('User deleted successfully');
             } catch (error) {
-                console.error('Delete user error:', error);
+                console.error('Error deleting user:', error);
+                alert('Error deleting user');
             }
         }
     };
@@ -78,7 +121,9 @@ const AdminDashboard = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setOffers(offers.filter(offer => offer.id !== offerId));
+
+
+            setOffers(offers.filter(offer => offer.id !== offerId));
             } catch (error) {
                 console.error('Delete offer error:', error);
             }
@@ -89,6 +134,17 @@ const AdminDashboard = () => {
         <div>
             <h1>Admin Dashboard</h1>
             <h2>All users:</h2>
+            <label>
+                Sort by:
+                <select value={userSort} onChange={e => {
+                    setUserSort(e.target.value);
+                    handleUserSortChange(e.target.value);
+                }}>
+                    <option value="id">ID</option>
+                    <option value="name">Name</option>
+                    <option value="role">Role</option>
+                </select>
+            </label>
             <table>
                 <thead>
                 <tr>
@@ -113,9 +169,21 @@ const AdminDashboard = () => {
                     </tr>
                 ))}
                 </tbody>
+                <button onClick={() => navigate('/user-profile/new')}>Add New</button>
             </table>
 
             <h2>All offers:</h2>
+            <label>
+                Sort by:
+                <select value={offerSort} onChange={e => {
+                    setOfferSort(e.target.value);
+                    handleOfferSortChange(e.target.value);
+                }}>
+                    <option value="id">ID</option>
+                    <option value="title">Title</option>
+                    <option value="customer">Customer</option>
+                </select>
+            </label>
             <table>
                 <thead>
                 <tr>
@@ -144,6 +212,7 @@ const AdminDashboard = () => {
                     </tr>
                 ))}
                 </tbody>
+                <button onClick={() => navigate('/offer-profile/new')}>Add New</button>
             </table>
 
         </div>
