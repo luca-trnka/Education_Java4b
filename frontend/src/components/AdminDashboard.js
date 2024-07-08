@@ -8,7 +8,6 @@ const AdminDashboard = () => {
     const [userSort, setUserSort] = useState('id');
     const [offerSort, setOfferSort] = useState('id');
     const navigate = useNavigate();
-    const [workers, setWorkers] = useState([]);
 
     useEffect(() => {
         const fetchUsersAndOffers = async () => {
@@ -23,14 +22,18 @@ const AdminDashboard = () => {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setUsers(usersResponse.data);
+                const sortedUsers = usersResponse.data.sort((a, b) => a.id - b.id);
+                setUsers(sortedUsers);
 
                 const offersResponse = await axios.get('http://localhost:8080/api/offers/all', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
-                setOffers(offersResponse.data);
+
+                const sortedOffers = offersResponse.data.sort((a, b) => a.id - b.id);
+                setOffers(sortedOffers);
+
             } catch (error) {
                 console.error('Fetch users and offers error:', error);
             }
@@ -68,7 +71,7 @@ const AdminDashboard = () => {
                 case 'customer':
                     return a.customer.id - b.customer.id;
                 default:
-                    return 0;
+                    return a.id - b.id;
             }
         });
 
@@ -128,6 +131,11 @@ const AdminDashboard = () => {
                 console.error('Delete offer error:', error);
             }
         }
+    };
+
+    const handleLogoutClick = () => {
+        localStorage.removeItem('token');
+        navigate('/');
     };
 
     return (
@@ -215,6 +223,7 @@ const AdminDashboard = () => {
                 <button onClick={() => navigate('/offer-profile/new')}>Add New</button>
             </table>
 
+            <button onClick={handleLogoutClick}>Log out</button>
         </div>
     );
 }

@@ -130,6 +130,4 @@ public class OfferDTO {
     public void setWorkerIds(List<Long> workerIds) {
         this.workerIds = workerIds;
     }
-
-    // getters and setters
 }

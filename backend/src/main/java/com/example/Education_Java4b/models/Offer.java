@@ -14,6 +14,7 @@ public class Offer {
 
     @NotBlank
     @Size(min = 5, max = 25, message = "Title size should be between 5 and 25 characters")
+    @Column(unique = true)
     private String title;
 
     @NotBlank
