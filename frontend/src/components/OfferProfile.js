@@ -9,7 +9,7 @@ const OfferProfile = () => {
     const [selectedStatus, setSelectedStatus] = useState('');
     const [selectedSupplierId, setSelectedSupplierId] = useState('');
     const [selectedCustomerId, setSelectedCustomerId] = useState('');
-    const [workerIds, setWorkerIds] = useState([])
+    const [workerIds, setWorkerIds] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
     const {offerId} = useParams();
     const navigate = useNavigate();
@@ -32,6 +32,8 @@ const OfferProfile = () => {
                 offerData.supplierId = offerData.supplier?.id;
                 offerData.workerIds = offerData.workers?.map(worker => worker.id);
                 setOffer(offerData);
+                setSelectedCustomerId(offerData.customerId);
+                setSelectedSupplierId(offerData.supplierId);
                 setStatuses(['NEW', 'ACCEPTED', 'REJECTED', 'IN_PROGRESS', 'READY_TO_BE_SHOWN', 'CUSTOMER_APPROVAL', 'CUSTOMER_DISAPPROVAL', 'FIXING_BUGS', 'INVOICED', 'PAID', 'COMPLETED']);
                 setSelectedStatus(response.data.status);
             } catch (error) {
@@ -54,8 +56,8 @@ const OfferProfile = () => {
                 title: offer.title,
                 description: offer.description,
                 status: selectedStatus,
-                supplierId: offer.supplierId,
-                customerId: offer.customerId,
+                supplierId: selectedSupplierId,
+                customerId: selectedCustomerId,
                 workerIds: offer.workerIds
             };
             console.log(offerDTO);
@@ -99,19 +101,17 @@ const OfferProfile = () => {
             </p>
             <p>Customer ID:
                 {isEditing ?
-                    <input type="text" value={offer.customerId}
-                           onChange={(e) => setOffer({...offer, customerId: e.target.value})}/>
-                    : offer.customerId}
+                    <Multiselect entityType="customers" selectedId={selectedCustomerId} setSelectedId={setSelectedCustomerId} isEditing={isEditing}/>
+                    : selectedCustomerId}
             </p>
             <p>Supplier ID:
                 {isEditing ?
-                    <input type="text" value={offer.supplierId}
-                           onChange={(e) => setOffer({...offer, supplierId: e.target.value})}/>
-                    : offer.supplierId}
+                    <Multiselect entityType="suppliers" selectedId={selectedSupplierId} setSelectedId={setSelectedSupplierId} isEditing={isEditing}/>
+                    : selectedSupplierId}
             </p>
             <p>Worker IDs:
                 {isEditing ?
-                    <Multiselect offer={offer} setOffer={setOffer} isEditing={isEditing}/>
+                    <Multiselect entityType="workers" offer={offer} setOffer={setOffer} isEditing={isEditing}/>
                     : offer.workerIds && offer.workerIds.join(', ')
                 }
             </p>

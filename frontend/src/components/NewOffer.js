@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Multiselect from './Multiselect';
 
 const NewOffer = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [status, setStatus] = useState('');
-    const [customer, setCustomer] = useState('');
-    const [supplier, setSupplier] = useState('');
-    const [workers, setWorkers] = useState([]);
+    const [status, setStatus] = useState('NEW'); // Default status
+    const [selectedCustomerId, setSelectedCustomerId] = useState('');
+    const [selectedSupplierId, setSelectedSupplierId] = useState('');
+    const [workerIds, setWorkerIds] = useState([]);
     const navigate = useNavigate();
 
     const offerStatuses = [
-        "NEW",
-        "ACCEPTED",
-        "REJECTED",
-        "IN_PROGRESS",
-        "READY_TO_BE_SHOWN",
-        "CUSTOMER_APPROVAL",
-        "CUSTOMER_DISAPPROVAL",
-        "FIXING_BUGS",
-        "INVOICED",
-        "COMPLETED"
+        "NEW", "ACCEPTED", "REJECTED", "IN_PROGRESS", "READY_TO_BE_SHOWN",
+        "CUSTOMER_APPROVAL", "CUSTOMER_DISAPPROVAL", "FIXING_BUGS", "INVOICED", "COMPLETED"
     ];
+
+    useEffect(() => {
+        const fetchOffer = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    console.error('Token is not available');
+                    return;
+                }
+                // Fetch customers, suppliers, and workers
+            } catch (error) {
+                console.error('Fetch offer error:', error);
+            }
+        };
+
+        fetchOffer();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,15 +41,18 @@ const NewOffer = () => {
             console.error('Token is not available');
             return;
         }
+        const offerData = {
+            title,
+            description,
+            status,
+            customerId: selectedCustomerId,
+            supplierId: selectedSupplierId,
+            workerIds
+        };
+
+        console.log("Submitting offer data:", offerData);
+
         try {
-            const offerData = {
-                title: title,
-                status: status,
-                description: description,
-                supplierId: supplier,
-                customerId: customer,
-                workerIds: workers.map(worker => parseInt(worker, 10))
-            };
             const response = await axios.post('http://localhost:8080/api/offers/', offerData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -71,7 +84,7 @@ const NewOffer = () => {
                 </div>
                 <div>
                     <label>Description:</label>
-                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <textarea value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </div>
                 <div>
                     <label>Status:</label>
@@ -83,22 +96,38 @@ const NewOffer = () => {
                 </div>
                 <div>
                     <label>Customer:</label>
-                    <input type="text" value={customer} onChange={(e) => setCustomer(e.target.value)}/>
+                    <Multiselect
+                        entityType="customers"
+                        selectedId={selectedCustomerId}
+                        setSelectedId={setSelectedCustomerId}
+                        isEditing={true}
+                    />
                 </div>
                 <div>
                     <label>Supplier:</label>
-                    <input type="text" value={supplier} onChange={(e) => setSupplier(e.target.value)}/>
+                    <Multiselect
+                        entityType="suppliers"
+                        selectedId={selectedSupplierId}
+                        setSelectedId={setSelectedSupplierId}
+                        isEditing={true}
+                    />
                 </div>
                 <div>
-                    <label>Workers (comma-separated IDs):</label>
-                    <input type="text" value={workers.join(',')}
-                           onChange={(e) => setWorkers(e.target.value.split(',').map(id => id.trim()))}/>
-                </div>
-                <button type="submit">Create Offer</button>
+                    <label>Workers:</label>
+                    <Multiselect
+                        entityType="workers"
+                        offer={{workerIds: workerIds}}
+                        setOffer={(newOffer) => setWorkerIds(newOffer.workerIds)}
+                        isEditing={true}
+                    />
+                    </div>
+                    <button type="submit">Create Offer</button>
             </form>
             <button onClick={handleGoBack}>Go Back</button>
         </div>
+
     );
-}
+};
+
 
 export default NewOffer;

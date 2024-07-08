@@ -87,4 +87,7 @@ public class OfferService {
         return offerRepository.save(offer);
     }
 
+    public List<Offer> getOffersBySupplierId(Long supplierId) {
+        return offerRepository.findBySupplierId(supplierId);
+    }
 }

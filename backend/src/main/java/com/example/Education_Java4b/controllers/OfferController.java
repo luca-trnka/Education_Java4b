@@ -4,6 +4,7 @@ import com.example.Education_Java4b.exceptions.ResourceNotFoundException;
 import com.example.Education_Java4b.models.Offer;
 import com.example.Education_Java4b.dtos.OfferDTO;
 import com.example.Education_Java4b.models.OfferStatus;
+import com.example.Education_Java4b.models.User;
 import com.example.Education_Java4b.services.AuthenticationService;
 import com.example.Education_Java4b.services.OfferService;
 import com.example.Education_Java4b.services.UserService;
@@ -16,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -123,4 +125,14 @@ public class OfferController {
         }
     }
 
+    @PreAuthorize("hasRole('SUPPLIER')")
+    @GetMapping("/suppliers-offers")
+    public ResponseEntity<?> getSuppliersOffers(Authentication authentication) {
+        String email = authentication.getName();
+
+        User user = userService.getUserByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        List<Offer> offers = offerService.getOffersBySupplierId(user.getId());
+        return ResponseEntity.ok(offers);
+    }
 }
