@@ -76,11 +76,11 @@ const SupplierDashboard = () => {
         setOffers(sortedOffers);
     };
     const handleAddWorker = () => {
-        navigate('/user-profile/new'); // Adjust the route as necessary
+        navigate('/user-profile/new');
     };
 
     const handleAddOffer = () => {
-        navigate('/offer-profile/new'); // Adjust the route as necessary, pre-fill supplier ID if possible
+        navigate('/offer-profile/new');
     };
 
     const handleEditOffer = (offerId) => {

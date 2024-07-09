@@ -23,9 +23,9 @@ const NewOffer = () => {
                 const token = localStorage.getItem('token');
                 if (!token) {
                     console.error('Token is not available');
+                    navigate('/login');
                     return;
                 }
-                // Fetch customers, suppliers, and workers
             } catch (error) {
                 console.error('Fetch offer error:', error);
             }

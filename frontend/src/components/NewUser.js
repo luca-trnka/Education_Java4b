@@ -14,8 +14,13 @@ const NewUser = () => {
         if (!token) {
             console.error('Token is not available');
             navigate('/dashboard');
+            return;
         }
-    }, []);
+        const userRole = "SUPPLIER"
+        if (userRole === "SUPPLIER") {
+            setRole('WORKER');
+        }
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -69,7 +74,8 @@ const NewUser = () => {
                     <label>Name:</label>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                 </div>
-                <div>
+                    {role !== 'WORKER' && (
+                        <div>
                     <label>Role:</label>
                     <select value={role} onChange={(e) => setRole(e.target.value)}>
                         <option value="NEW_USER">NEW_USER</option>
@@ -79,6 +85,7 @@ const NewUser = () => {
                         <option value="ADMIN">ADMIN</option>
                     </select>
                 </div>
+                    )}
                 <button type="submit">Create User</button>
             </form>
             <button onClick={handleGoBack}>Go Back</button>
